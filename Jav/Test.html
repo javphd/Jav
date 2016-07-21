@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Test</title>
+	<meta charset="utf-8" />
+    <script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.min.js"></script>
+    <script type="text/javascript">
+        function testPost() {
+            var myData = [{ ID: 1, Value: "Test" }, { ID: 2, Value: "Test2" }];
+
+            $.ajax({
+                url: "/Home/Post",
+                contentType: "application/json",
+                async: true,
+                type: "POST",
+                data: JSON.stringify(myData),
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log("FAIL: " + errorThrown);
+                },
+                success: function (data, textStatus, jqXHR) {
+                    console.log("SUCCES");
+                    alert(data);
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <a href="javascript:testPost();">Click here to test</a>
+</body>
+</html>
